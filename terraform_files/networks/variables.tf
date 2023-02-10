@@ -53,7 +53,7 @@ variable "secondary_svc_ip_range_name" {
 variable "secondary_svc_ip_cidr_range" {
 
 }
-variable "depends_on_list" {
+# variable "depends_on_list" {
   
-}
+# }
 

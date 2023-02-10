@@ -3,7 +3,7 @@ resource "google_compute_network" "p-vpc" {
   name                    = var.vpc_name
   auto_create_subnetworks = var.subnets_auto_create_state
   routing_mode            = var.routing_mode
-  depends_on              = [var.depends_on_list]
+  # depends_on              = [var.depends_on_list]
 }
 
 resource "google_compute_subnetwork" "management_subnet" {

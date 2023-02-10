@@ -8,7 +8,8 @@ module "network" {
   vpc_name                  = "project-vpc"
   subnets_auto_create_state = "false"
   routing_mode              = "GLOBAL"
-  depends_on_list           = [module.services.compute_api]
+  # depends_on_list           = [""]
+  # depends_on_list = [module.services.compute_api]
 
   subnet_name_1            = var.manegement_subnet_name # will have private vm ( private ip ) no public and it will use NAT
   subnet_cidr_1            = var.manegement_subnet_cidr
