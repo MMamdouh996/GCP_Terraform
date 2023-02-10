@@ -1,7 +1,7 @@
-module "services" {
-  source = "./svc"
+# module "services" {
+#   source = "./svc"
 
-}
+# }
 module "network" {
   source                    = "./networks"
   project_name              = var.project_name
@@ -39,6 +39,7 @@ module "management_ec2" {
   instnace_image   = "ubuntu-2204-jammy-v20230114"
   nat_ip           = module.network.nat_ip
   # nat_ip           = module.management_ec2.managment_instnace
+  project = "mm-iti-cairo-2023"
 }
 
 
@@ -52,5 +53,14 @@ module "Private-GKE" {
   svc_range_name      = var.secondary_svc_ip_range_name
   access_cidr_block   = var.manegement_subnet_cidr
   access_display_name = var.manegement_subnet_name
+  # gke_depend = [module.svc.container_api,module.svc.compute_api]
+  # depends_on = [
+  #   module.services.container_api, module.services.compute_api
+  # ]
+  node_pool_name      = "node_pool"
+  node_machine_type   = "e2-small"
+  is_node_preemptible = true
+  number_of_node      = 2
+  project             = "mm-iti-cairo-2023"
 }
 

@@ -22,3 +22,21 @@ variable "access_cidr_block" {
 variable "access_display_name" {
 
 }
+# variable "gke_depend" {
+
+# }
+variable "node_pool_name" {
+
+}
+variable "node_machine_type" {
+
+}
+variable "is_node_preemptible" {
+
+}
+variable "number_of_node" {
+
+}
+variable "project" {
+
+}

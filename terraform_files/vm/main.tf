@@ -1,3 +1,14 @@
+resource "google_service_account" "instance-sa" {
+  account_id   = "instance-sa"
+  display_name = "instance-sa"
+}
+resource "google_project_iam_member" "instance-sa" {
+  project = var.project
+  role    = "roles/container.admin"
+  member  = "serviceAccount:${google_service_account.instance-sa.email}"
+}
+
+
 resource "google_compute_instance" "managment_instnace" {
   name         = var.instance_name
   machine_type = var.machine_type
@@ -45,7 +56,21 @@ gcloud container clusters get-credentials private-cluster --zone us-east1-b --pr
   EOF
 
   service_account {
-    email  = "terraform-sa@mm-iti-cairo-2023.iam.gserviceaccount.com"
-    scopes = ["cloud-platform"]
+    email  = google_service_account.instance-sa.email
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
   }
+}
+
+resource "google_compute_firewall" "ssh" {
+  project   = var.project
+  name      = "ssh"
+  network   = var.vpc_self_link
+  priority  = 800
+  direction = "INGRESS"
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+  target_tags   = ["ssh"]
+  source_ranges = ["0.0.0.0/0"]
 }

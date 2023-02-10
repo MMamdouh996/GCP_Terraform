@@ -18,5 +18,8 @@ variable "instance_zone" {
 
 }
 variable "nat_ip" {
-  
+
+}
+variable "project" {
+
 }

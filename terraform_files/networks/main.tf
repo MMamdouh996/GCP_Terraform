@@ -75,7 +75,7 @@ resource "google_compute_firewall" "all-ingress" {
 
   allow {
     protocol = "tcp"
-    ports    = ["80", "22"]
+    ports    = ["80"]
   }
 
   source_ranges = ["0.0.0.0/0"]
