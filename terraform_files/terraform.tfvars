@@ -1,0 +1,5 @@
+project_name                 = "mm-iti-cairo-2023"
+secondary_pods_ip_range_name = "k8s-pods-range"
+secondary_svc_ip_range_name  = "k8s-svc-range"
+manegement_subnet_cidr       = "10.5.0.0/24"
+manegement_subnet_name       = "management-subnet"
