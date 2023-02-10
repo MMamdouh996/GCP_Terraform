@@ -57,7 +57,7 @@ module "Private-GKE" {
   # depends_on = [
   #   module.services.container_api, module.services.compute_api
   # ]
-  node_pool_name      = "node_pool"
+  node_pool_name      = "node-pool"
   node_machine_type   = "e2-small"
   is_node_preemptible = true
   number_of_node      = 2
